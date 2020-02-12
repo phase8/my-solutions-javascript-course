@@ -2,22 +2,39 @@
 
 
 let el = document.querySelectorAll("li");
+let list = document.querySelector("ul");
+
+
 
 const btn = document.querySelector("button");
-let fnt = 5
+let size = 5
 
-//el.style.display = "block";
 
 function changeHeight() {
 
     for (let i = 0; i < el.length; i++) {
         el[i].style.display = "block";
-        el[i].style.fontSize = fnt
+        el[i].style.fontSize = size + "px"
     }
-
+    size += 10
 }
+
+function changeHeight2() {
+
+    el.forEach(each);
+    size += 10
+}
+
+function each(item, index) {
+    item.style.display = "block"
+    item.style.fontSize = size + "px"
+}
+
+
+
+
 
 // btn.onclick = changeHeight
 
 
-btn.addEventListener("click", changeHeight)
+btn.addEventListener("click", changeHeight2)

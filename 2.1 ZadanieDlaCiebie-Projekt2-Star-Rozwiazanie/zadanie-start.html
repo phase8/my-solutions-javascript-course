@@ -28,21 +28,22 @@
 
 
 
-            if (size >= window.innerheight / 2) {
-                grow = false;
-            } else if (size <= 0) { // notice that both "if" and "else if" reverse value
-                grow = true;
-            }
+            if (size >= window.innerHeight / 2) {
+                grow = !grow;
+            } else if (size <= 0) {
+                grow = !grow;
+            } // notice that both "if" and "else if" reverse value
+
+
 
             if (grow) {
                 size += 10
                 squere.style.backgroundColor = "green";
-                squere.style.height = size + "px";
             } else {
                 size -= 10
                 squere.style.backgroundColor = "red";
-                squere.style.height = size + "px";
             }
+            squere.style.height = size + "px";
 
 
         }
