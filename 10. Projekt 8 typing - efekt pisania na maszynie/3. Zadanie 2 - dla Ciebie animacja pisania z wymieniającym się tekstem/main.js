@@ -7,9 +7,7 @@
 const spnText = document.querySelector('.text');
 const spnCursor = document.querySelector('.cursor');
 const txt = ['tekst1', 'tekst2', 'tekst3']
-
-
-const time = 200;
+const time = 100;
 let indexText = 0;
 let addd = 0
 
@@ -17,54 +15,33 @@ function myFunction2() {
     spnText.textContent = ""
 }
 
-// petla albo funkcja w funkcji
-
-
 function myFunction(addd) {
-
     const addLetterOld = () => {
-
         spnText.textContent += txt[addd][indexText];
         indexText++;
         if (indexText === txt[addd].length) clearInterval(indexTyping);
-
-
-
-
     }
     const indexTyping = setInterval(addLetterOld, time)
-    console.log(addd)
-
-    if (2 > addd) {
+    if (3 > addd) {
         indexText = 0;
         testowa()
-    } else {
-        console.log("else")
     }
-
-
-
 }
-
-
 
 let testowa = () => {
     addd += 1
-
-    setTimeout(addLetter, 4001);
-    setTimeout(myFunction2, 4000);
+    if (2 >= addd) {
+        setTimeout(addLetter, 2000);
+        setTimeout(myFunction2, 2000)
+    }
 }
 
-
 // Implementacja
-
-
 let addLetter = () => {
     setTimeout(myFunction(addd), 4000);
 }
 
 addLetter(); //pierwsze wywołanie
-
 
 // Animacja kursora (zostaw bez zmian)
 const cursorAnimation = () => {
