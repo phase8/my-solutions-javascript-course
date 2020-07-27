@@ -6,8 +6,8 @@
 
 const spnText = document.querySelector('.text');
 const spnCursor = document.querySelector('.cursor');
-const txt = ['tekst1', 'tekst2', 'tekst3']
-const time = 100;
+const txt = ['DZIEŃ DOBRY!!! ', 'FAJNIE ŻE JESTEŚ :) ', 'ZACZYNAMY ... ']
+const time = 100; // there is connection betwen this variable and sum of the settimeout functions below. 
 let indexText = 0;
 let addd = 0
 
@@ -22,23 +22,21 @@ function myFunction(addd) {
         if (indexText === txt[addd].length) clearInterval(indexTyping);
     }
     const indexTyping = setInterval(addLetterOld, time)
-    if (3 > addd) {
-        indexText = 0;
-        testowa()
-    }
+    testowa()
 }
 
 let testowa = () => {
+    indexText = 0;
     addd += 1
     if (2 >= addd) {
-        setTimeout(addLetter, 2000);
-        setTimeout(myFunction2, 2000)
+        setTimeout(addLetter, 5000);
+        setTimeout(myFunction2, 5000)
     }
 }
 
 // Implementacja
 let addLetter = () => {
-    setTimeout(myFunction(addd), 4000);
+    setTimeout(myFunction(addd), 5000);
 }
 
 addLetter(); //pierwsze wywołanie
@@ -48,3 +46,47 @@ const cursorAnimation = () => {
     spnCursor.classList.toggle('active');
 }
 setInterval(cursorAnimation, 400);
+
+/*
+SOLUTION OF AUTHOR OF THE COURSE:
+
+
+
+let activeLetter = -15;
+let activeText = 0;
+
+
+// Implementacja
+const addLetter = () => {
+ // Użyj w środku setTimeout
+ if (activeLetter >= 0) {
+  spnText.textContent += txt[activeText][activeLetter];
+ }
+ activeLetter++;
+ if (activeLetter === txt[activeText].length) {
+
+  activeText++;
+  if (activeText === txt.length) return;
+
+  return setTimeout(() => {
+   activeLetter = -15;
+   spnText.textContent = '';
+   addLetter();
+  }, 2000)
+
+
+ }
+ setTimeout(addLetter, 100)
+
+}
+
+
+addLetter(); //pierwsze wywołanie
+
+
+// Animacja kursora (zostaw bez zmian)
+const cursorAnimation = () => {
+ spnCursor.classList.toggle('active');
+}
+setInterval(cursorAnimation, 400);
+*/
