@@ -46,57 +46,46 @@ const changeSlide = () => {
     h1.textContent = slideList[active].text;
     changeDot()
 }
-const activateChangeSlide = () => setInterval(changeSlide, time)
-activateChangeSlide()
-
-let removeChangeSlide = () => {
-    clearInterval(activateChangeSlide)
-}
-
-function removeChangeSlide2() {
-    clearInterval(activateChangeSlide);
-    console.log('????')
-}
-
+const activateChangeSlide = setInterval(changeSlide, time) // 1. remeber that setInterval() is a funtion so you can't write it like this: let activateChangeSlide = () => {setInterval(changeSlide, time)} 2. you can't use const because code in line 82 won't work properly. 
 
 const keyChangeSlide = (e) => {
-
+    clearInterval(activateChangeSlide);
     const expr = e.keyCode;
 
     switch (expr) {
+
         case 37:
             console.log('1')
-
-            function removeChangeSlide2() {
-                clearInterval(activateChangeSlide);
-            }
-
-            removeChangeSlide2()
-
             active--;
-            if (active === slideList.length) {
-                active = 0;
+            if (active < 0) {
+                active = 2;
             }
+
             image.src = slideList[active].img;
             h1.textContent = slideList[active].text;
-            changeDot()
+            changeDot();
+
             break;
         case 39:
             console.log('2')
-            removeChangeSlide2();
+
             active++;
+
             if (active === slideList.length) {
                 active = 0;
             }
             image.src = slideList[active].img;
             h1.textContent = slideList[active].text;
-            changeDot()
+            changeDot();
+            //setTimeout(changeSlide, 5000) // works
+            //setTimeout(activateChangeSlide, 5000) // doesn't work at all
+            setInterval(changeSlide, 5000) // doesn't work properly
+            //activateChangeSlide = setInterval(changeSlide, 5000)
+
     }
+
 }
 
-
-
-
 // utwórz funkcje keyChangeSlide. Zadanie może wymagać także zmian poza funkcją.
-window.addEventListener('keydown', removeChangeSlide2)
+
 window.addEventListener('keydown', keyChangeSlide)
