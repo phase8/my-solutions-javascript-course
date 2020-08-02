@@ -46,7 +46,7 @@ const changeSlide = () => {
     h1.textContent = slideList[active].text;
     changeDot()
 }
-const activateChangeSlide = setInterval(changeSlide, time) // 1. remeber that setInterval() is a funtion so you can't write it like this: let activateChangeSlide = () => {setInterval(changeSlide, time)} 2. you can't use const because code in line 82 won't work properly. 
+let activateChangeSlide = setInterval(changeSlide, time) // 1. remeber that setInterval() is a funtion so you can't write it like this: let activateChangeSlide = () => {setInterval(changeSlide, time)} 2. you can't use const because code in line 82 won't work properly. 
 
 const keyChangeSlide = (e) => {
     clearInterval(activateChangeSlide);
@@ -55,7 +55,6 @@ const keyChangeSlide = (e) => {
     switch (expr) {
 
         case 37:
-            console.log('1')
             active--;
             if (active < 0) {
                 active = 2;
@@ -67,20 +66,18 @@ const keyChangeSlide = (e) => {
 
             break;
         case 39:
-            console.log('2')
 
             active++;
-
             if (active === slideList.length) {
                 active = 0;
             }
             image.src = slideList[active].img;
             h1.textContent = slideList[active].text;
             changeDot();
-            //setTimeout(changeSlide, 5000) // works
+
             //setTimeout(activateChangeSlide, 5000) // doesn't work at all
-            setInterval(changeSlide, 5000) // doesn't work properly
-            //activateChangeSlide = setInterval(changeSlide, 5000)
+            //setInterval(changeSlide, 5000) // doesn't work properly
+            activateChangeSlide = setInterval(changeSlide, time)
 
     }
 
