@@ -1,29 +1,40 @@
 const h1 = document.querySelector('h1');
 
 function giveNumber(number = 0) {
-    //console.log("ok")
-    // let nextNumber = number++
     h1.textContent = number
     return number
 }
 
-function showTime(NewNumber = giveNumber()) {
-    let number = NewNumber
-
-    // console.log(number)
-
-    function test() {
+function showTime(number = giveNumber()) {
+    function timer() {
         const h1 = document.querySelector('h1');
-        //number = number++
+        h1.textContent = number
+        //number = number++ | bad example of code, it won't work
         number++
         //if (number > 10) {
         //     return
         // }
-        h1.textContent = number
-        // console.log(number)
     }
+    setInterval(timer, 1000)
+}
+showTime()
 
-    setInterval(test, 1000)
+/*
+SOLUTION OF THE AUTHOR OF THE CODE:
+const clock = () => {
+ let seconds = 0;
+ document.body.textContent = 0 + " sekund";
+
+ const timer = () => {
+  seconds++;
+  document.body.textContent = seconds + " sekund";
+ }
+
+ return timer
 }
 
-showTime()
+const start = clock();
+
+setInterval(start, 1000); | IMPORTANT!!! START HAS ACCES TO VARIABLE seconds IN LINE 24 !!! THIS VARIABLE STORES CURRENT NUMBER. 
+
+*/
