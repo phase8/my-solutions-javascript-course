@@ -1,24 +1,29 @@
 const h1 = document.querySelector('h1');
 
-const giveNumber = (number = 0) => {
+function giveNumber(number = 0) {
+    //console.log("ok")
+    // let nextNumber = number++
+    h1.textContent = number
     return number
-
 }
 
+function showTime(NewNumber = giveNumber()) {
+    let number = NewNumber
 
+    // console.log(number)
 
-
-const showTime = (NewNumber = giveNumber()) => {
-    console.log(NewNumber)
-    //let number = NewNumber
-    h1.textContent = NewNumber
-    let dwa = NewNumber++
-    const xxx = () => {
-        showTime(dwa)
+    function test() {
+        const h1 = document.querySelector('h1');
+        //number = number++
+        number++
+        //if (number > 10) {
+        //     return
+        // }
+        h1.textContent = number
+        // console.log(number)
     }
 
-    return setTimeout(xxx, 1000)
+    setInterval(test, 1000)
 }
-
 
 showTime()
