@@ -2,55 +2,48 @@
 
  var matches = document.getElementsByTagName("p");
 
+ let playStop = document.getElementById("submit")
+ let stop = document.getElementById("testo")
 
- //
-
- let submit = document.getElementById("submit")
- let testo = document.getElementById("testo")
- //testo.addEventListener("click", stopFunction);
-
-
+ //let playStop = document.getElementsByClassName("main")[0]
+ //let stop = document.querySelector(".reset")
+ let isActive = false
 
 
-
- //
-
- function stopFunction() {
-
-     clearInterval(timerActivator)
-
- }
 
  const h1 = document.querySelector('h1');
  let number = 0
 
- function showTime() {
-     function timer() {
-         h1.textContent = number
-         number++
-         /*
-         if (5 < number) {
-             clearInterval(timerActivator)
-             console.log(number)
-         }
-         */
-         testo.onclick = stopFunction;
+ //function showTime() {}
 
-         function stopFunction() {
+ playStop.onclick = start
 
-             clearInterval(timerActivator)
-         }
-         submit.onclick = start
+ function start() {
+     console.log("start")
+     if (isActive = false) {
+         playStop.textContent = "Pauza"
 
-         function start() {
-             showTime()
-             console.log("start")
+         function timer() {
+             h1.textContent = number
+             number++
+             //stop.onclick = stopFunction;
+             /*
+                     function stopFunction() {
+   
+                         clearInterval(timerActivator)
+                     }
+            */
          }
 
-
+         let timerActivator = setInterval(timer, 1000)
+         isActive = !isActive
+     } else {
+         playStop.textContent = "Start"
+         stopFunction()
+         isActive = !isActive
      }
-
-     let timerActivator = setInterval(timer, 1000)
  }
 
- showTime()
+ function stopFunction() {
+     clearInterval(timerActivator)
+ }
