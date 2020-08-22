@@ -1,26 +1,32 @@
  // http://websamuraj.pl/examples/js/projekt11/
 
- let startTime = ""
- let second = 0
- let millisecond = 0
- let nowTime = ""
-
+ let test = 0
+ let startTime = test + new Date().getTime(); // TUTAJ SKONCZYLES
+ let second
+ let millisecond
+ let nowTime
+ let stopPeriod = 0
  let playStop = document.getElementsByClassName("main")[0]
  let stop = document.querySelector(".reset")
  let show = document.querySelector(".show")
  let isActive = false
+ let timerActivator = setInterval(timerMilliseconds, 40)
+ clearInterval(timerActivator)
+ let stopPeriodCount = setInterval(stopPeriod1, 1)
+ clearInterval(stopPeriodCount)
 
-
-
- let timerActivator2 = setInterval(timerMilliseconds, 1)
- clearInterval(timerActivator2)
+ function stopPeriod1() {
+     stopPeriod++
+     // console.log(stopPeriod)
+ }
 
  function timerMilliseconds() {
      nowTime = new Date().getTime();
-     seconds = Math.floor((nowTime - startTime) / 1000)
+     seconds = Math.floor((nowTime - startTime + stopPeriod) / 1000)
      milisecond = Math.floor((nowTime - startTime) % 60);
+     let showSeconds = nowTime < 1000 ? 0 : seconds
      let showMiliseconds = milisecond > 9 ? milisecond : " " + milisecond
-     show.textContent = seconds + "." + showMiliseconds
+     show.textContent = showSeconds + "." + showMiliseconds
  }
 
  playStop.onclick = start
@@ -28,19 +34,17 @@
  function start() {
      if (isActive === false) {
          playStop.textContent = "Pauza"
-         timerActivator2 = setInterval(timerMilliseconds, 40)
-         startTime = new Date().getTime();
+         timerActivator = setInterval(timerMilliseconds, 40)
+         clearInterval(stopPeriodCount)
+
+
+
          isActive = !isActive
      } else {
          playStop.textContent = "Start"
-         clearInterval(timerActivator2)
+         stopPeriodCount = setInterval(stopPeriod1, 1)
+         clearInterval(timerActivator)
          isActive = !isActive
+
      }
  }
-
-
- /* 
-  // http://websamuraj.pl/examples/js/projekt11/
-
-
- */
