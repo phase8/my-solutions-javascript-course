@@ -18,20 +18,78 @@ Mark likes to tip 20% of the bill when the bill is less than $100, 10% when the 
 GOOD LUCK 😀
 */
 
-// zrob to jako klase moze 
 
-let john = {
+
+
+
+
+const john = {
     bills: [124, 48, 268, 180, 42],
     calculator: function () {
-        for (var i = 0; i < this.bills.length; i++) {
-            console.log(this.bills[i])
-            if (this.bills[i] > 5) {
-                this.tips.push(2)
+        for (let i = 0; i < this.bills.length; i++) {
+
+            if (this.bills[i] > 0 & this.bills[i] < 50) {
+                const tip = 0.2 * this.bills[i]
+                this.tips.push(tip)
+                this.tipsBills.push(+tip + this.bills[i])
+            } else if (this.bills[i] >= 50 & this.bills[i] <= 200) {
+                const tip = 0.15 * this.bills[i]
+                this.tips.push(tip)
+                this.tipsBills.push(+tip + this.bills[i])
+            } else if (this.bills[i] > 200) {
+                const tip = 0.1 * this.bills[i]
+                this.tips.push(tip)
+                this.tipsBills.push(+tip + this.bills[i])
             }
         }
-        return this.bills
     },
     tips: [],
     tipsBills: []
 }
 john.calculator()
+
+
+
+const mark = {
+    bills: [77, 375, 110, 45],
+    calculator: function () {
+        for (let i = 0; i < this.bills.length; i++) {
+
+            if (this.bills[i] > 0 & this.bills[i] < 100) {
+                const tip = 0.2 * this.bills[i]
+                this.tips.push(tip)
+                this.tipsBills.push(+tip + this.bills[i])
+            } else if (this.bills[i] >= 100 & this.bills[i] <= 300) {
+                const tip = 0.15 * this.bills[i]
+                this.tips.push(tip)
+                this.tipsBills.push(+tip + this.bills[i])
+            } else if (this.bills[i] > 300) {
+                const tip = 0.1 * this.bills[i]
+                this.tips.push(tip)
+                this.tipsBills.push(+tip + this.bills[i])
+            }
+        }
+    },
+    tips: [],
+    tipsBills: []
+}
+mark.calculator()
+
+
+
+
+
+
+function average(family) {
+    let sum = 0
+
+    for (let i = 0; i < family.tips.length; i++) {
+        sum = sum + family.tips[i]
+    }
+    const avg = sum / family.tips.length
+    console.log(avg)
+
+}
+
+average(mark)
+average(john)
