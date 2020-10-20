@@ -57,7 +57,7 @@ const changeColor2 = (e) => {
   // wersja 1 - instrukcja if
   // wersja 2 - instrukcja switch
 
-  /* batter solution of the author of the course:
+  /* better solution of the author of the course:
   switch (e.keyCode) {
      case 38:
         document.body.style.backgroundColor = `rgb(${red < 255 ? ++red : red}, ${green < 255 ? ++green : green}, ${blue < 255 ? ++blue : blue})`;

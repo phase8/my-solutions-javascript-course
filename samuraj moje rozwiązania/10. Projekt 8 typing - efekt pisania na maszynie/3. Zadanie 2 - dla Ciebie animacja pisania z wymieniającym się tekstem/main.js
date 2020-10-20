@@ -66,7 +66,7 @@ const addLetter = () => {
  if (activeLetter === txt[activeText].length) {
 
   activeText++;
-  if (activeText === txt.length) return;
+  if (activeText === txt.length) return; // RETURN ENDS FUNCTION
 
   return setTimeout(() => {
    activeLetter = -15;

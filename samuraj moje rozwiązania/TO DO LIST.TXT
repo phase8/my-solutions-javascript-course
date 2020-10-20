@@ -1,0 +1,3 @@
+zrób grę papier kamień nożyczki
+
+to do app przepisana na OOP

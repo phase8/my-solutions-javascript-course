@@ -1,7 +1,7 @@
 const h1 = document.querySelector('h1');
 
-function giveNumber(number = 0) {
-    h1.textContent = number
+function giveNumber() {
+    let number = 0
     return number
 }
 
@@ -15,7 +15,7 @@ function showTime(number = giveNumber()) {
         //     return
         // }
     }
-    setInterval(timer, 1000)
+    setInterval(timer, 1000) // | IMPORTANT!!! timer HAS ACCES TO VARIABLE number IN LINE 4!!! THIS VARIABLE STORES CURRENT NUMBER.
 }
 showTime()
 
@@ -35,6 +35,5 @@ const clock = () => {
 
 const start = clock();
 
-setInterval(start, 1000); | IMPORTANT!!! START HAS ACCES TO VARIABLE seconds IN LINE 24 !!! THIS VARIABLE STORES CURRENT NUMBER. 
-
+setInterval(start, 1000); | IMPORTANT!!! START HAS ACCES TO VARIABLE seconds IN LINE 25 !!! THIS VARIABLE STORES CURRENT NUMBER. 
 */

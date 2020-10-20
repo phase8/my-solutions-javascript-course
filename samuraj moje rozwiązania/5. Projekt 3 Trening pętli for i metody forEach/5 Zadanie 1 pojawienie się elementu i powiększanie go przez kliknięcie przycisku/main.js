@@ -4,11 +4,8 @@
 let el = document.querySelectorAll("li");
 let list = document.querySelector("ul");
 
-
-
 const btn = document.querySelector("button");
 let size = 5
-
 
 function changeHeight() {
 
@@ -18,7 +15,7 @@ function changeHeight() {
     }
     size += 10
 }
-
+/* alternative:
 function changeHeight2() {
 
     el.forEach(each);
@@ -29,12 +26,6 @@ function each(item, index) {
     item.style.display = "block"
     item.style.fontSize = size + "px"
 }
+*/
 
-
-
-
-
-// btn.onclick = changeHeight
-
-
-btn.addEventListener("click", changeHeight2)
+btn.addEventListener("click", changeHeight) // alternative: btn.onclick = changeHeight
